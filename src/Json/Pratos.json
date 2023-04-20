@@ -1,0 +1,15 @@
+{
+    "form" : 
+    [
+        {
+            "type" : "text",
+            "name" : "Nome Do Prato",
+            "placeholder" : "Rabada"
+        },
+        {
+            "type" : "value",
+            "name" : "Valor [R$]",
+            "placeholder" : ""
+        }
+    ]
+}

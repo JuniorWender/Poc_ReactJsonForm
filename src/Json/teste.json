@@ -1,0 +1,20 @@
+{ 
+    "form" : 
+    [
+        {
+            "type" : "text",
+            "name" : "Nome",
+            "placeholder" : "Seu nome"
+        },
+        {
+            "type" : "text",
+            "name" : "Endereço",
+            "placeholder" : "Rua x"
+        },
+        {
+            "type" : "text",
+            "name" : "Telefone",
+            "placeholder" : "(xx) xxxxx-xxxx"
+        }
+    ]
+}
