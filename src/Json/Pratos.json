@@ -3,13 +3,18 @@
     [
         {
             "type" : "text",
+            "name" : "Nome Do Restaurente",
+            "placeholder" : "Restaurante do Zé"
+        },
+        {
+            "type" : "text",
             "name" : "Nome Do Prato",
             "placeholder" : "Rabada"
         },
         {
             "type" : "value",
             "name" : "Valor [R$]",
-            "placeholder" : ""
+            "mask" : "99.99"
         }
     ]
 }

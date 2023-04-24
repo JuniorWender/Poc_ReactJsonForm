@@ -1,0 +1,30 @@
+{ 
+    "form" : 
+    [
+        {
+            "type" : "text",
+            "name" : "Nome",
+            "placeholder" : "Seu nome"
+        },
+        {
+            "type" : "text",
+            "name" : "Data De Nascimento",
+            "mask" : "99/99/9999"
+        },
+        {
+            "type" : "text",
+            "name" : "Telefone",
+            "mask" : "(99) 99999-9999"
+        },
+        {
+            "type" : "text",
+            "name" : "CEP",
+            "mask" : "99999-999"
+        },
+        {
+            "type" : "text",
+            "name" : "Endereço",
+            "placeholder" : "Rua x"
+        }
+    ]
+}

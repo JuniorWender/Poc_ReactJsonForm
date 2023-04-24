@@ -1,30 +1,21 @@
 import { useState } from "react";
 
 import { Container,Button } from "react-bootstrap";
-import JsonFile  from "../../Json/teste.json";
+import InputMask from 'react-input-mask';
 
 function Custom_Form() {
     const [formFields, setFormFields] = useState();
-    const [formOk, setformOk] = useState(false);
     let fileReader;
-    let content;
 
     function formsubmit(e){
         e.preventDefault();
         console.log(e.target[0].value);
-        console.log(e.target[1].value);
-    }
-
-    function FileReadersubmit(e){
-        e.preventDefault();
-        setformOk(true);
+        // console.log(e.target[1].value);
     }
 
     function handleFileRead () {
-        content = fileReader.result;
-        console.log(content);
-        // setFormFields(content);
-        // console.log(formFields);
+        var content = fileReader.result;
+        setFormFields(JSON.parse(content).form);
     }
 
     function handleFileChosen (file) {
@@ -37,18 +28,15 @@ function Custom_Form() {
         <Container>
             <h1>Custom Form</h1>
             <h4 className="mt-4">Adicione o Arquivo Json</h4>
-            <form onSubmit={FileReadersubmit}>
                 <input className="mt-3" type="file" id="file" onChange={e => handleFileChosen(e.target.files[0])} accept=".json" required/>
-                <Button className="mt-3 d-flex" type="submit" variant="primary">Submit</Button>
-            </form>
-            {formOk  &&
+            {formFields  &&
                 <form onSubmit={formsubmit}>
                     <h4 className="mt-4">Formulário Criado Com Json</h4>
-                    {content.form.map((item,i) => {
+                    {formFields.map((item,i) => {
                         return (
                             <div key={i}>
                                 <label className="d-flex mt-2">{item.name}</label>
-                                <input type={item.type} id={item.name} name={item.name} placeholder={item.placeholder} required/>
+                                <InputMask  mask={item.mask} type={item.type} id={item.name} name={item.name} placeholder={item.placeholder} required/>
                             </div>
                         );
                     })}
