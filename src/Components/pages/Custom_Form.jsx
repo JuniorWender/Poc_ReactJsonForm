@@ -5,12 +5,46 @@ import InputMask from 'react-input-mask';
 
 function Custom_Form() {
     const [formFields, setFormFields] = useState();
+    let contador = 0;
     let fileReader;
 
     function formsubmit(e){
+        let i = 0;
         e.preventDefault();
-        console.log(e.target[0].value);
-        // console.log(e.target[1].value);
+        debugger
+        console.log(
+            JSON.stringify({
+                form: formFields,
+                data: e.target[0].value
+            })
+        );
+        while(i < contador){
+            console.log(e.target[i].name,": ",e.target[i].value);
+            i++;
+        }
+        // jsonName: true,
+        // newValues: true,
+        // originalValues: formFields,
+
+        // fetch('http://localhost:4000/api/jsonForms', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         form: formFields,
+        //         data: e.target
+        //     }),
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log('Success:', data);
+        //     alert("Formulário Criado Com Sucesso");
+        // })
+        // .catch((error) => {
+        //     console.error('Error:', error);
+        //     alert("Erro ao Criar Formulário");
+        // });
     }
 
     function handleFileRead () {
@@ -33,6 +67,7 @@ function Custom_Form() {
                 <form onSubmit={formsubmit}>
                     <h4 className="mt-4">Formulário Criado Com Json</h4>
                     {formFields.map((item,i) => {
+                        contador = contador + i;
                         return (
                             <div key={i}>
                                 <label className="d-flex mt-2">{item.name}</label>
