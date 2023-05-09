@@ -5,54 +5,52 @@ import InputMask from 'react-input-mask';
 
 function Custom_Form() {
     const [formFields, setFormFields] = useState();
+    const [originalJson, setOriginalJson] = useState("");
+    const [jsonName, setJsonName] = useState("");
     let contador = 0;
     let fileReader;
 
     function formsubmit(e){
         let i = 0;
+        let newJson = {};
         e.preventDefault();
-        debugger
-        console.log(
-            JSON.stringify({
-                form: formFields,
-                data: e.target[0].value
-            })
-        );
+        // debugger
         while(i < contador){
-            console.log(e.target[i].name,": ",e.target[i].value);
+            newJson[e.target[i].name] = e.target[i].value;
             i++;
         }
-        // jsonName: true,
-        // newValues: true,
-        // originalValues: formFields,
-
-        // fetch('http://localhost:4000/api/jsonForms', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         form: formFields,
-        //         data: e.target
-        //     }),
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     console.log('Success:', data);
-        //     alert("Formulário Criado Com Sucesso");
-        // })
-        // .catch((error) => {
-        //     console.error('Error:', error);
-        //     alert("Erro ao Criar Formulário");
-        // });
+        
+        //http://localhost:4000/api/jsonForms
+        fetch('http://localhost:4000/jsonform', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                JsonName: jsonName,
+                OriginalValues: formFields,
+                NewValues : newJson
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert("Formulário Criado Com Sucesso");
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert("Erro ao Criar Formulário");
+        });
     }
 
     function handleFileRead () {
         var content = fileReader.result;
+        setOriginalJson(JSON.parse(content));
         setFormFields(JSON.parse(content).form);
     }
 
     function handleFileChosen (file) {
+        setJsonName(file.name);
         fileReader = new FileReader();
         fileReader.onloadend = handleFileRead;
         fileReader.readAsText(file);        
