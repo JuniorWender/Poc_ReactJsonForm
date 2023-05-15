@@ -1,16 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './Components/pages/Home';
-import Custom_Navbar from './Components/layout/Custom_NavBar';
-import Custom_Form from './Components/pages/Custom_Form';
+import CustomNavbar from './Components/layout/CustomNavBar';
+import FillForm from './Components/pages/FillForm';
+import ViewForm from './Components/pages/ViewForm';
+import CreateForm from './Components/pages/CreateForm';
 
 function App() {
   return (
     <Router>
-      <Custom_Navbar/>
+      <CustomNavbar/>
       <Routes>
         <Route exact path="/" element={<Home/>} />
-        <Route  path="/form" element={<Custom_Form/>} />
+        <Route  path="/fillForm" element={<FillForm/>} />
+        <Route  path="/viewForm" element={<ViewForm/>} />
+        <Route  path="/createForm" element={<CreateForm/>} />
       </Routes>
     </Router>
   );

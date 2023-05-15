@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from 'react-bootstrap/Nav';
 import { Link } from "react-router-dom";
 
-function Custom_NavBar() {
+function CustomNavBar() {
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -13,7 +13,9 @@ function Custom_NavBar() {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/form" className="nav-link"> Formulário </Link>
+            <Link to="/createForm" className="nav-link"> Criar Formulário </Link>
+            <Link to="/fillForm" className="nav-link"> Preencher Formulário </Link>
+            <Link to="/viewForm" className="nav-link"> Ver Formulários </Link>
           </Nav>
         </Navbar.Collapse>
         </Container>
@@ -22,4 +24,4 @@ function Custom_NavBar() {
   );
 }
 
-export default Custom_NavBar;
+export default CustomNavBar;

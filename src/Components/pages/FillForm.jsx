@@ -3,33 +3,33 @@ import { useState } from "react";
 import { Container,Button } from "react-bootstrap";
 import InputMask from 'react-input-mask';
 
-function Custom_Form() {
+function FillForm() {
+    
     const [formFields, setFormFields] = useState();
     const [originalJson, setOriginalJson] = useState("");
-    const [newJson, setNewJson] = useState({});
     const [jsonName, setJsonName] = useState("");
+    
     let contador = 0;
+    let newJson = {};
     let fileReader;
 
     function formsubmit(e){
         let i = 0;
-        let newJson = {};
         e.preventDefault();
-        // debugger
-        while(i < contador){
+        while(i <= contador){
             newJson[e.target[i].name] = e.target[i].value;
             i++;
         }
         
-        //http://localhost:4000/api/jsonForms
         fetch('http://localhost:4000/jsonform', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
+            body: 
+            JSON.stringify({
                 JsonName: jsonName,
-                OriginalValues: formFields,
+                OriginalValues: originalJson,
                 NewValues : newJson
             }),
         })
@@ -66,7 +66,7 @@ function Custom_Form() {
                 <form onSubmit={formsubmit}>
                     <h4 className="mt-4">Formulário Criado Com Json</h4>
                     {formFields.map((item,i) => {
-                        contador = contador + i;
+                        contador = i;
                         return (
                             <div key={i}>
                                 <label className="d-flex mt-2">{item.name}</label>
@@ -81,4 +81,4 @@ function Custom_Form() {
     );
   }
   
-  export default Custom_Form;
+  export default FillForm;
