@@ -26,10 +26,9 @@ function ViewForm() {
   return (
     <Container>
       <h1 className="mt-3">View Form</h1>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="mt-4">
         <thead>
           <tr>
-            <th>#</th>
             <th>Id</th>
             <th>Json Name</th>
             <th>Original Json</th>
@@ -37,18 +36,16 @@ function ViewForm() {
           </tr>
         </thead>
         <tbody>
-            {formFields && 
-                formFields.map((input, index) => {
-                    return (
-                    <tr key={index}>
-                        <td>{input.id}</td>
-                        <td>{input.JsonName}</td>
-                        <td>{input.OriginalValues}</td>
-                        <td>{input.NewValues}</td>
-                    </tr>
-                    );
-                })
-            }
+          {formFields.map((input, i) => {
+              return (
+                <tr key={i}>
+                    <td>{input.id}</td>
+                    <td>{input.JsonName}</td>
+                    <td><code>{JSON.stringify(input.OriginalValues)}</code></td>
+                    <td><code>{JSON.stringify(input.NewValues)}</code></td>
+                </tr>
+              );
+          })}
         </tbody>
       </Table>
     </Container>

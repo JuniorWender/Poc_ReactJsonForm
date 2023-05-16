@@ -15,7 +15,6 @@ function FillForm() {
 
     function formsubmit(e){
         let i = 0;
-        e.preventDefault();
         while(i <= contador){
             newJson[e.target[i].name] = e.target[i].value;
             i++;
