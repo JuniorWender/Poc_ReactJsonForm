@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 
 import { Container } from "react-bootstrap";
+import InputForm from "../layout/InputForm";
 
 function CreateForm(){
     // const number = useRef(null);
@@ -39,7 +40,7 @@ function CreateForm(){
                 </div>
             } */}
             {
-                
+                <InputForm create={true} />
 
             }
         </Container>
