@@ -25,7 +25,7 @@ function ViewForm() {
 
   return (
     <Container>
-      <h1 className="mt-3">View Form</h1>
+      <h1 className="mt-3">Todos Os Form</h1>
       <Table striped bordered hover className="mt-4">
         <thead>
           <tr>
