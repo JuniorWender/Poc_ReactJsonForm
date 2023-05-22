@@ -1,9 +1,13 @@
 import { Container } from "react-bootstrap";
+import CustomSelect from "./CustomSelect";
 
 function InputForm({ create, inputNumber, labelTitle, inputType, inputName, inputPlaceholder, inputMask}){
 
     const createForm = ["Tipo Do Input", "Nome Do Campo", "Placeholder", "Mascara"];
-    const complement = ["text/number...", "Nome Na Tag HTML", "O Placeholder Do Campo", "Mascara (CNPJ, CPF, Tel)"]
+    const complement = ["text/number...", "Nome Na Tag HTML", "O Placeholder Do Campo", "Mascara (CNPJ, CPF, Tel)"];
+
+    const inputsList = [{name:"--", value:""}, {name:"Text", value:"text"}, {name:"Number", value:"number"}, {name:"Password", value:"password"}, {name:"Email", value:"email"}, {name:"Date", value:"date"}];
+    const maskList = [{name:"--", value:""}, {name: "CPF", value: "999.999.999-99"}, {name: "CPNJ", value: "99.999.999/9999-99"}, {name: "Telefone", value: "(99) 99999-9999"}, {name: "Data", value: "99/99/9999"}];
 
     function formValidator(){
         if(create === true){
@@ -20,16 +24,26 @@ function InputForm({ create, inputNumber, labelTitle, inputType, inputName, inpu
                     {newCreateForm.map((form, index) => {
                         return(
                             <div className="d-inline-block w-25 mb-3" key={index}>
-                                {newCreateForm[index] === "Tipo Do Input" ? 
+                                {newCreateForm[index] === "Tipo Do Input" ?
                                     <>
                                         <label className="mt-2">{`${newCreateForm[index]}:`}</label> 
-                                        <input className="d-flex" required type="text" name={newCreateForm[index]} placeholder={newComplement[index]} mask={inputMask} />
+                                        <CustomSelect inputList={inputsList} />
                                     </>
-                                        :
+                                        : null
+                                }
+                                {newCreateForm[index] === "Mascara" ? 
+                                    <>
+                                        <label className="mt-2">{`${newCreateForm[index]}:`}</label> 
+                                        <CustomSelect inputList={maskList} />
+                                    </>
+                                        : null
+                                }
+                                {newCreateForm[index] !== "Tipo Do Input" && newCreateForm[index] !== "Mascara" ?
                                     <>
                                         <label className="mt-2">{`${newCreateForm[index]}:`}</label>
-                                        <input className="d-flex" type="text" name={newCreateForm[index]} placeholder={newComplement[index]} mask={inputMask} />
-                                    </>
+                                        <input className="d-flex" type="text" name={newCreateForm[index]} placeholder={newComplement[index]} />
+                                    </> 
+                                        : null
                                 }
                             </div>
                         );
