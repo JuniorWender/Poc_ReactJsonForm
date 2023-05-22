@@ -4,7 +4,7 @@ import CustomSelect from "./CustomSelect";
 function InputForm({ create, inputNumber, labelTitle, inputType, inputName, inputPlaceholder, inputMask}){
 
     const createForm = ["Tipo Do Input", "Nome Do Campo", "Placeholder", "Mascara"];
-    const complement = ["text/number...", "Nome Na Tag HTML", "O Placeholder Do Campo", "Mascara (CNPJ, CPF, Tel)"];
+    const complement = ["", "Nome Na Tag HTML", "O Placeholder Do Campo", ""];
 
     const inputsList = [{name:"--", value:""}, {name:"Text", value:"text"}, {name:"Number", value:"number"}, {name:"Password", value:"password"}, {name:"Email", value:"email"}, {name:"Date", value:"date"}];
     const maskList = [{name:"--", value:""}, {name: "CPF", value: "999.999.999-99"}, {name: "CPNJ", value: "99.999.999/9999-99"}, {name: "Telefone", value: "(99) 99999-9999"}, {name: "Data", value: "99/99/9999"}];
